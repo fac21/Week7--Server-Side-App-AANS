@@ -40,7 +40,7 @@ INSERT INTO sessions (sid, data) VALUES
     '{"info":"things"}'
 );
 
-INSERT INTO games (game_name, file_path) VALUES (
+INSERT INTO games (game_name, game_path) VALUES (
     'hangman', '/hangman'
     );
 
