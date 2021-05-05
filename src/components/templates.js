@@ -20,7 +20,7 @@ function getHtml(tittle, mainContent) {
 
 const signupForm = `  
   <h1>Sign up</h1>
-  <form action="/signup" method="POST">
+  <form action="sign-up" method="POST">
       <label for="username">Username</label>
       <input type="text" name="username" id="username" required />
       <label for="email">Email</label>

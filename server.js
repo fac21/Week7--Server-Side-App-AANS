@@ -16,8 +16,8 @@ server.get("/", (request, response) => {
 });
 
 // Sign up route
-server.get("/signup", bodyParser, signup.get);
-server.post("/signup", bodyParser, signup.post);
+server.get("/sign-up", bodyParser, signup.get);
+server.post("/sign-up", bodyParser, signup.post);
 
 server.use((req, res) => {
   res.status(404).send(`<h1>Not found</h1>`);

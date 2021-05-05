@@ -1,6 +1,6 @@
 const crypto = require("crypto");
 const bcrypt = require("bcryptjs");
-const model = require("./database/model");
+const model = require("../database/model");
 
 const COOKIE_OPTIONS = {
   httpOnly: true,
@@ -9,10 +9,10 @@ const COOKIE_OPTIONS = {
   signed: true,
 };
 
-function createUser(email, password, username) {
+function createUser(username, email, password) {
   return bcrypt
     .hash(password, 10)
-    .then((hash) => model.createUser(email, hash, username));
+    .then((hash) => model.insertUser(username, email, hash));
 }
 
 function saveUserSession(user) {
