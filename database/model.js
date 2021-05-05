@@ -14,4 +14,3 @@ function getGamePath() {
 
 module.exports = { getGames, getGamePath };
 
-vjkj
