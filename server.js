@@ -1,6 +1,8 @@
 const express = require("express");
 const server = express();
 const logger = require("./src/middleware/logger.js");
+const home = require("./src/home");
+
 const cookieParser = require("cookie-parser");
 const staticHandler = express.static("public");
 const bodyParser = express.urlencoded();
@@ -11,9 +13,7 @@ const signup = require("./src/handlers/signup");
 server.use(staticHandler);
 server.use(logger.logger);
 
-server.get("/", (request, response) => {
-  response.send(`<h1>Hello</h1>`);
-});
+server.get("/", home.getLayout);
 
 // Sign up route
 server.get("/sign-up", bodyParser, signup.get);
