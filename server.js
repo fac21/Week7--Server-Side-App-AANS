@@ -1,6 +1,7 @@
 const express = require("express");
 const server = express();
 const logger = require("./src/middleware/logger.js");
+const home = require("./src/home");
 
 const cookieParser = require("cookie-parser");
 
@@ -11,9 +12,7 @@ const bodyParser = express.urlencoded();
 
 server.use(logger.logger);
 
-server.get("/", (request, response) => {
-  response.send(`<h1>Hello</h1>`);
-});
+server.get("/", home.getLayout);
 
 server.post("/submit", bodyParser, (request, response) => {});
 

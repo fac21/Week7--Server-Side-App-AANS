@@ -11,7 +11,8 @@ CREATE TABLE users (
 
 CREATE TABLE games (
     id SERIAL PRIMARY KEY, 
-    game_name TEXT NOT NULL
+    game_name TEXT NOT NULL,
+    file_path TEXT NOT NULL /*link to game*/
 );
 
 
@@ -39,8 +40,8 @@ INSERT INTO sessions (sid, data) VALUES
     '{"info":"things"}'
 );
 
-INSERT INTO games (game_name) VALUES (
-    'hangman'
+INSERT INTO games (game_name, file_path) VALUES (
+    'hangman', '/hangman'
     );
 
 INSERT INTO stats ( user_id, game_id, score, last_played) VALUES
