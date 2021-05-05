@@ -17,7 +17,7 @@ function createUser(username, email, password) {
 
 function saveUserSession(user) {
   const randSID = crypto.randomBytes(18).toString("base64");
-  return model.createSession(randSID, { user });
+  return model.insertSession(randSID, { user });
 }
 
 function verifyUser(email, password) {

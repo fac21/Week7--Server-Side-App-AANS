@@ -10,4 +10,12 @@ function insertUser(username, email, hash_password) {
     .then((result) => result.rows[0]);
 }
 
-module.exports = { insertUser };
+function insertSession(sid, data) {
+  const INSERT_SESSION = `
+        INSERT INTO sessions (sid, data) VALUES ($1, $2)
+        RETURNING sid
+        `;
+  return db.query(INSERT_SESSION, [sid, data]).then((result) => result.rows[0]);
+}
+
+module.exports = { insertUser, insertSession };

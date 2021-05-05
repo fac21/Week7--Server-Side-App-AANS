@@ -10,6 +10,7 @@ const signup = require("./src/handlers/signup");
 
 server.use(staticHandler);
 server.use(logger.logger);
+server.use(cookieParser(process.env.COOKIE_SECRET));
 
 server.get("/", (request, response) => {
   response.send(`<h1>Hello</h1>`);

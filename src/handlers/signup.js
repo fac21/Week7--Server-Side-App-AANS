@@ -8,13 +8,17 @@ function get(request, response) {
 
 function post(request, response) {
   const { username, email, password } = request.body;
-  //console.log(username, email, password);
+
   auth
     .createUser(username, email, password)
-    // .then((user) => auth.saveUserSessioon(user))
-    // .then((sid) => {});
-    .then(() => {
+    .then((user) => auth.saveUserSession(user))
+    .then((sid) => {
+      response.cookie("sid", sid, auth.COOKIE_OPTIONS);
       response.redirect("/");
+    })
+    .catch((error) => {
+      console.error(error);
+      response.status(401).send(`<h1>Something went wrong</h1>`);
     });
 }
 
