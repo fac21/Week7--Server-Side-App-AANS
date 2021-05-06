@@ -1,11 +1,13 @@
 const express = require("express");
 const server = express();
+const hlGame = require("./src/handlers/higherLower")
 const session = require("express-session");
 const auth = require("./src/auth");
 
 // Middleware
 const cookieParser = require("cookie-parser");
 const logger = require("./src/middleware/logger.js");
+const errorHandler = require("./src/middleware/errorHandler.js");
 const staticHandler = express.static("public");
 const flash = require("connect-flash");
 const bodyParser = express.urlencoded();
@@ -18,6 +20,7 @@ const logIn = require("./src/handlers/logIn");
 
 server.use(cookieParser(process.env.COOKIE_SECRET));
 server.use(readCookie.readCookie);
+
 server.use(
   session({
     secret: process.env.COOKIE_SECRET,
@@ -32,10 +35,24 @@ server.use(logger.logger);
 
 server.get("/", home.getLayout);
 
+server.get("/games/higher-lower", hlGame.getHLPage);
+
+server.post("/update-score", (request, response) => {
+  if(request){
+    console.log(request)
+  }
+  response.redirect("/")
+});
+
 server.get("/games/:gameName", (request, response) => {
   const gameName = request.params.gameName;
-  response.send(`<h1>${gameName} is not available at this time! </h1>`);
+  console.log(request)
+  if(gameName != 'higher-lower'){
+    console.log("dynamic")
+  response.send(`<h1>${gameName} is not available at this time! </h1>`)
+}
 });
+
 // Log in route
 server.get("/log-in", logIn.get);
 server.post("/log-in", bodyParser, logIn.post);
@@ -44,9 +61,17 @@ server.post("/log-in", bodyParser, logIn.post);
 server.get("/sign-up", signup.get);
 server.post("/sign-up", bodyParser, signup.post);
 
-server.use((request, response) => {
-  response.status(404).send(`<h1>Not found</h1>`);
+server.get("/error", (req, res, next) => {
+  const fakeError = new Error("uh oh");
+  fakeError.status = 403;
+  next(fakeError);
 });
+
+server.use(errorHandler.handleErrors);
+
+// server.use((request, response) => {
+//   response.status(404).send(`<h1>Not found</h1>`);
+// });
 
 const PORT = process.env.PORT || 3000;
 

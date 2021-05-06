@@ -12,7 +12,8 @@ function getHtml(title, mainContent) {
   </head>
   <body> 
   ${mainContent}
-  <script src="app.js"></script>
+  <script src="/app.js" type="module"></script>
+  <script src="/oldamy.js" type="module"></script>
   </body>
 </html>
     `;
