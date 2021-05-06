@@ -3,6 +3,7 @@ const server = express();
 const logger = require("./src/middleware/logger.js");
 const home = require("./src/handlers/home");
 const logIn = require("./src/handlers/logIn");
+const hlGame = require("./src/handlers/higherLower")
 
 const cookieParser = require("cookie-parser");
 const staticHandler = express.static("public");
@@ -16,6 +17,8 @@ server.use(logger.logger);
 server.use(cookieParser(process.env.COOKIE_SECRET));
 
 server.get("/", home.getLayout);
+
+server.get("/games/higher-lower", hlGame.getHLPage)
 
 server.get("/games/:gameName", (request, response) => {
   const gameName = request.params.gameName;
