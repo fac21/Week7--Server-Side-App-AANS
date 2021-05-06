@@ -7,7 +7,7 @@ var lower = document.getElementById("lower");
 //NEED TO STREAMLINE FUNCTION
 //game function 
 const hlbutton = document.querySelector("#new-hl-game");
-hlbutton.addEventListener('click', updateScore);
+hlbutton.addEventListener('click', higherLower);
 
 function higherLower(){
 //makes all backgrounds standard on reset
