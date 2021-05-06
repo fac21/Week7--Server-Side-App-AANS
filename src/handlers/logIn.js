@@ -1,7 +1,10 @@
 const model = require("../../database/model");
+const templates = require("../components/templates");
 
 function get(request, response) {
-  response.send("test");
+  const pageContent = templates.logInForm;
+  response.send(templates.getHtml("Log In", pageContent));
 }
 
 module.exports = { get };
+
