@@ -1,9 +1,12 @@
 const templates = require("../components/templates");
 const auth = require("../auth");
+const flashMessages = require("../middleware/flashMessages");
 
 function get(request, response) {
   const pageContent = templates.logInForm;
-  response.send(templates.getHtml("Log In", pageContent));
+  const flashMes = flashMessages.getFleshMessage(request);
+
+  response.send(templates.getHtml("Log In", flashMes + pageContent));
 }
 
 function post(request, response) {
@@ -13,12 +16,14 @@ function post(request, response) {
     .verifyUser(username, password)
     .then((user) => auth.saveUserSession(user))
     .then((sid) => {
+      request.flash("loginMessage", flashMessages.loginMessage);
       response.cookie("sid", sid, auth.COOKIE_OPTIONS);
       response.redirect("/");
     })
     .catch((error) => {
       console.error(error);
-      response.status(401).send(`<h1>Something went wrong</h1>`);
+      request.flash("LoginErrorMessage", flashMessages.loginErrorMessage);
+      response.status(401).redirect(`/log-in`);
     });
 }
 

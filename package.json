@@ -21,9 +21,11 @@
   "homepage": "https://github.com/fac21/week7--AANS#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
+    "connect-flash": "^0.1.1",
     "cookie-parser": "^1.4.5",
     "dotenv": "^8.5.1",
     "express": "^4.17.1",
+    "express-session": "^1.17.1",
     "pg": "^8.6.0"
   },
   "devDependencies": {
