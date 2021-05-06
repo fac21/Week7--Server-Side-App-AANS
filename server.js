@@ -1,19 +1,36 @@
 const express = require("express");
 const server = express();
-const logger = require("./src/middleware/logger.js");
-const home = require("./src/handlers/home");
-const logIn = require("./src/handlers/logIn");
+const session = require("express-session");
+const auth = require("./src/auth");
 
+// Middleware 
 const cookieParser = require("cookie-parser");
+const logger = require("./src/middleware/logger.js");
 const staticHandler = express.static("public");
+const flash = require("connect-flash");
 const bodyParser = express.urlencoded();
 
 // Routes
+const home = require("./src/handlers/home");
 const signup = require("./src/handlers/signup");
+const logIn = require("./src/handlers/logIn");
 
+
+
+
+server.use(
+  session({
+    secret: process.env.COOKIE_SECRET,
+    cookie: auth.COOKIE_SECRET,
+    saveUninitialized: true, // don't save unmodified
+    resave: true, // forces the session to be saved back to the store
+  })
+);
+server.use(flash());
 server.use(staticHandler);
 server.use(logger.logger);
 server.use(cookieParser(process.env.COOKIE_SECRET));
+
 
 server.get("/", home.getLayout);
 
