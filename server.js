@@ -5,18 +5,22 @@ const home = require("./src/home");
 const logIn = require("./src/handlers/logIn");
 
 const cookieParser = require("cookie-parser");
-
 const staticHandler = express.static("public");
-server.use(staticHandler);
-
 const bodyParser = express.urlencoded();
 
+// Routes
+const signup = require("./src/handlers/signup");
+
+server.use(staticHandler);
 server.use(logger.logger);
+server.use(cookieParser(process.env.COOKIE_SECRET));
 
 server.get("/", home.getLayout);
 server.get("/log-in", logIn.get);
 
-server.post("/submit", bodyParser, (request, response) => {});
+// Sign up route
+server.get("/sign-up", bodyParser, signup.get);
+server.post("/sign-up", bodyParser, signup.post);
 
 server.use((req, res) => {
   res.status(404).send(`<h1>Not found</h1>`);

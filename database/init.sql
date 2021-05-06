@@ -12,7 +12,7 @@ CREATE TABLE users (
 CREATE TABLE games (
     id SERIAL PRIMARY KEY, 
     game_name TEXT NOT NULL,
-    file_path TEXT NOT NULL /*link to game*/
+    game_path TEXT NOT NULL /*link to game*/
 );
 
 
