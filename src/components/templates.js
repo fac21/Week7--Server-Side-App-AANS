@@ -38,4 +38,16 @@ function createGameList(gamesArray){
   return gameListHtml
 }
 
-module.exports = { getHtml, signupForm, createGameList };
+const logInForm = `
+<h1>Member Log In</h1>
+<form action="log-in" method="POST">
+  <label for="username">Username</label>
+  <input type="text" name="username" id="username" required />
+
+  <label for="password">Password</label>
+  <input type="password" name="password" id="password" required />
+
+  <input type="submit" value="Log in" />
+</form>`;
+
+module.exports = { getHtml, signupForm, logInForm, createGameList};

@@ -1,16 +1,16 @@
-const templates = require("../components/templates.js");
-const auth = require("../auth.js");
+const templates = require("../components/templates");
+const auth = require("../auth");
 
 function get(request, response) {
-  const pageContent = templates.signupForm;
-  response.send(templates.getHtml("Sign up", pageContent));
+  const pageContent = templates.logInForm;
+  response.send(templates.getHtml("Log In", pageContent));
 }
 
 function post(request, response) {
-  const { username, email, password } = request.body;
+  const { username, password } = request.body;
 
   auth
-    .createUser(username, email, password)
+    .verifyUser(username, password)
     .then((user) => auth.saveUserSession(user))
     .then((sid) => {
       response.cookie("sid", sid, auth.COOKIE_OPTIONS);

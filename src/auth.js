@@ -17,16 +17,16 @@ function createUser(username, email, password) {
 
 function saveUserSession(user) {
   const randSID = crypto.randomBytes(18).toString("base64");
-  return model.createSession(randSID, { user });
+  return model.insertSession(randSID, { user });
 }
 
-function verifyUser(email, password) {
-  return model.getUser(email).then((user) => {
-    return bcrypt.compare(password, user.password).then((match) => {
+function verifyUser(userName, password) {
+  return model.selectUser(userName).then((user) => {
+    return bcrypt.compare(password, user.hash_password).then((match) => {
       if (!match) {
         throw new Error("password doesn't match!");
       } else {
-        delete user.password;
+        delete user.hash_password;
         return user;
       }
     });

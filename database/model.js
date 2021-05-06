@@ -11,6 +11,25 @@ function insertUser(username, email, hash_password) {
     .then((result) => result.rows[0]);
 }
 
+
+function selectUser(username) {
+  const SELECT_USER = `
+        SELECT * FROM users WHERE username = $1
+        `;
+  return db
+    .query(SELECT_USER, [username])
+    .then((result) => result.rows[0]);
+}
+
+
+function insertSession(sid, data) {
+  const INSERT_SESSION = `
+        INSERT INTO sessions (sid, data) VALUES ($1, $2)
+        RETURNING sid
+        `;
+  return db.query(INSERT_SESSION, [sid, data]).then((result) => result.rows[0]);
+}
+
 function getGames() {
   const game_details = `SELECT games.game_name, games.game_path FROM games`;
   return db.query(game_details).then((result) => result.rows)
@@ -18,4 +37,4 @@ function getGames() {
   //.then(result => console.log(result))
 }
 
-module.exports = { getGames, insertUser };
+module.exports = { getGames, getGamePath, insertUser, insertSession, selectUser };
