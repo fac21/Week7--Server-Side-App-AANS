@@ -1,9 +1,12 @@
 const templates = require("../components/templates.js");
 const auth = require("../auth.js");
+const flashMessages = require("../middleware/flashMessages");
 
 function get(request, response) {
   const pageContent = templates.signupForm;
-  response.send(templates.getHtml("Sign up", pageContent));
+  const flashMes = flashMessages.getFleshMessage(request);
+
+  response.send(templates.getHtml("Sign up", flashMes + pageContent));
 }
 
 function post(request, response) {
@@ -14,11 +17,23 @@ function post(request, response) {
     .then((user) => auth.saveUserSession(user))
     .then((sid) => {
       response.cookie("sid", sid, auth.COOKIE_OPTIONS);
+
+      request.flash("signUpMessage", flashMessages.signupMessage);
+
       response.redirect("/");
     })
     .catch((error) => {
+      // if (error.code === "23505") {
+      //   request.flash(
+      //     "signUpErrorMessage",
+      //     `<h2>${error.detail.split("=")[1]}</h2>`
+      //   );
+
+      //   response.status(401).redirect(`/log-in`);
+      // }
       console.error(error);
-      response.status(401).send(`<h1>Something went wrong</h1>`);
+
+      response.status(401).send(`Server Error`);
     });
 }
 
