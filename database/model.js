@@ -39,7 +39,6 @@ function getGames() {
     .query(game_details)
     .then((result) => result.rows)
     .then((array) => array.map((item) => [item.game_name, item.game_path]));
-  //.then(result => console.log(result))
 }
 
 module.exports = {

@@ -4,14 +4,15 @@ function readCookie(req, res, next) {
   const sid = req.signedCookies.sid;
   if (sid) {
     model.selectSession(sid.sid).then((user) => {
-      if (user.data) {
-        console.log(user.data);
-        req.userSession = user.data;
+      const userData = user.data.user;
+      if (userData) {
+        req.userSession = userData;
       }
       next();
     });
+  } else {
+    next();
   }
-  next();
 }
 
 module.exports = { readCookie };

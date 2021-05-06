@@ -21,10 +21,15 @@ const signupErrorMessage = `
 <h2 class="flash-message">Sign error</h2>
 `;
 
+const alreadyLogin = `
+<h2 class="flash-message">You are already login</h2>
+`;
+
 module.exports = {
   loginMessage,
   signupMessage,
   getFleshMessage,
   loginErrorMessage,
   signupErrorMessage,
+  alreadyLogin,
 };
