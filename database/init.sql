@@ -40,9 +40,12 @@ INSERT INTO sessions (sid, data) VALUES
     '{"info":"things"}'
 );
 
-INSERT INTO games (game_name, game_path) VALUES (
-    'hangman', '/hangman'
-    );
+INSERT INTO games (game_name, game_path) VALUES 
+    ('Hangman', '/hangman'),
+    ('Noughts and Crosses', '/noughts-crosses'), 
+    ('Connect 4', '/connect-4'), 
+    ('Higher or Lower', '/higher-lower')
+    ;
 
 INSERT INTO stats ( user_id, game_id, score, last_played) VALUES
   (1,  1, 2, (SELECT CURRENT_TIMESTAMP));

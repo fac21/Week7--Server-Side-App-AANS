@@ -1,7 +1,7 @@
 const express = require("express");
 const server = express();
 const logger = require("./src/middleware/logger.js");
-const home = require("./src/home");
+const home = require("./src/handlers/home");
 const logIn = require("./src/handlers/logIn");
 
 const cookieParser = require("cookie-parser");
@@ -17,6 +17,10 @@ server.use(cookieParser(process.env.COOKIE_SECRET));
 
 server.get("/", home.getLayout);
 
+server.get("/games/:gameName", (request, response) => {
+  const gameName = request.params.gameName;
+  response.send(`<h1>${gameName} is not available at this time! </h1>`);
+});
 // Log in route
 server.get("/log-in", logIn.get);
 server.post("/log-in", bodyParser, logIn.post);

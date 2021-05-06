@@ -1,4 +1,5 @@
 const db = require("./connection.js");
+const templates = require("../src/components/templates")
 
 function insertUser(username, email, hash_password) {
   const INSERT_USER = `
@@ -30,15 +31,10 @@ function insertSession(sid, data) {
 }
 
 function getGames() {
-  const game_name = `SELECT game_name FROM games`;
-
-  return db.query(game_name).then((resolve) => console.log(resolve));
-}
-
-function getGamePath() {
-  const game_path = `SELECT file_path FROM games`;
-
-  return db.query(game_path).then((resolve) => console.log(resolve));
+  const game_details = `SELECT games.game_name, games.game_path FROM games`;
+  return db.query(game_details).then((result) => result.rows)
+  .then((array) => array.map(item => [item.game_name, item.game_path]))
+  //.then(result => console.log(result))
 }
 
 module.exports = { getGames, getGamePath, insertUser, insertSession, selectUser };
