@@ -11,15 +11,17 @@ function insertUser(username, email, hash_password) {
 }
 
 function getGames() {
-  const game_name = `SELECT game_name FROM games`;
-
-  return db.query(game_name).then((resolve) => console.log(resolve));
+  const game_name = `SELECT games.game_name, games.game_path FROM games`;
+  return db.query(game_name).then((result) => result.rows)
+  .then((array) => array.map(item => [item.game_name, item. game_path]))
+  .then(names => names.forEach(([item0, item1]) => {console.log(`I love ${item0} more than ${item1}`)}));
 }
 
 function getGamePath() {
-  const game_path = `SELECT file_path FROM games`;
-
-  return db.query(game_path).then((resolve) => console.log(resolve));
+  const game_path = `SELECT game_path FROM games`;
+  return db.query(game_path).then((result) => result.rows)
+  .then((array) => array.map(item => item.game_path))
+  .then(paths => console.log(paths));
 }
 
 module.exports = { getGames, getGamePath, insertUser };

@@ -1,7 +1,7 @@
 const express = require("express");
 const server = express();
 const logger = require("./src/middleware/logger.js");
-const home = require("./src/home");
+const home = require("./src/handlers/home");
 
 const cookieParser = require("cookie-parser");
 const staticHandler = express.static("public");

@@ -1,8 +1,9 @@
-const templates = require("./components/templates.js");
-const model = require("../database/model");
+const templates = require("../components/templates.js");
+const model = require("../../database/model");
 
 function getLayout(req, res) {
-  model.getGames().then(model.getFilePath());
+  const gamePathsArray = model.getGamePath();
+  const gamesArray =  model.getGames();
   const tittle = "Game Home Page";
   const mainContent = `
   <nav>
