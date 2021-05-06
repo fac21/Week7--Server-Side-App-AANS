@@ -3,6 +3,7 @@ const auth = require("../auth");
 
 function get(request, response) {
   const pageContent = templates.logInForm;
+  console.log(request)
   response.send(templates.getHtml("Log In", pageContent));
 }
 

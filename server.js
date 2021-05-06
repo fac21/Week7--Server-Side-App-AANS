@@ -18,12 +18,17 @@ server.use(cookieParser(process.env.COOKIE_SECRET));
 
 server.get("/", home.getLayout);
 
-server.get("/games/higher-lower", hlGame.getHLPage)
-
 server.get("/games/:gameName", (request, response) => {
   const gameName = request.params.gameName;
-  response.send(`<h1>${gameName} is not available at this time! </h1>`);
+  console.log(request)
+  if(gameName != 'higher-lower'){
+    console.log("dynamic")
+  response.send(`<h1>${gameName} is not available at this time! </h1>`)
+}
 });
+
+server.get("/games/higher-lower", hlGame.getHLPage);
+
 // Log in route
 server.get("/log-in", logIn.get);
 server.post("/log-in", bodyParser, logIn.post);
