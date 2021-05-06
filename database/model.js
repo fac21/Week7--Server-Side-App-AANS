@@ -37,4 +37,4 @@ function getGames() {
   //.then(result => console.log(result))
 }
 
-module.exports = { getGames, getGamePath, insertUser, insertSession, selectUser };
+module.exports = { getGames, insertUser, insertSession, selectUser };
