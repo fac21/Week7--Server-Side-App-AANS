@@ -11,7 +11,7 @@ function getHLPage(request, response){
           </div>
 
           <div class="row4">
-            <button class="new-game" onclick=higherLower()>New Game</button>
+            <button class="new-game" id="new-hl-game"> New Game</button>
           </div>
 
           <div class="row3">
