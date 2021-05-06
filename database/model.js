@@ -1,4 +1,5 @@
 const db = require("./connection.js");
+const templates = require("../src/components/templates")
 
 function insertUser(username, email, hash_password) {
   const INSERT_USER = `
@@ -11,17 +12,10 @@ function insertUser(username, email, hash_password) {
 }
 
 function getGames() {
-  const game_name = `SELECT games.game_name, games.game_path FROM games`;
-  return db.query(game_name).then((result) => result.rows)
-  .then((array) => array.map(item => [item.game_name, item. game_path]))
-  .then(names => names.forEach(([item0, item1]) => {console.log(`I love ${item0} more than ${item1}`)}));
+  const game_details = `SELECT games.game_name, games.game_path FROM games`;
+  return db.query(game_details).then((result) => result.rows)
+  .then((array) => array.map(item => [item.game_name, item.game_path]))
+  //.then(result => console.log(result))
 }
 
-function getGamePath() {
-  const game_path = `SELECT game_path FROM games`;
-  return db.query(game_path).then((result) => result.rows)
-  .then((array) => array.map(item => item.game_path))
-  .then(paths => console.log(paths));
-}
-
-module.exports = { getGames, getGamePath, insertUser };
+module.exports = { getGames, insertUser };

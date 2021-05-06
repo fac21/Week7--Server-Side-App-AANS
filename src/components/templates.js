@@ -1,5 +1,5 @@
-function getHtml(tittle, mainContent) {
-  return `
+function getHtml(title, mainContent) {
+  return  `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -8,7 +8,7 @@ function getHtml(tittle, mainContent) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="description" content="">
     <link rel="stylesheet" href="/style.css">
-    <title>${tittle}</title>
+    <title>${title}</title>
   </head>
   <body> 
   ${mainContent}
@@ -31,4 +31,11 @@ const signupForm = `
     </form>
 `;
 
-module.exports = { getHtml, signupForm };
+function createGameList(gamesArray){
+  const gameListHtml = ''
+  gamesArray.forEach((array) => gameListHtml += 
+  `<li><a href="${array[1]}">${array[0]}</a></li>`)
+  return gameListHtml
+}
+
+module.exports = { getHtml, signupForm, createGameList };

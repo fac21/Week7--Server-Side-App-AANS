@@ -15,6 +15,11 @@ server.use(logger.logger);
 
 server.get("/", home.getLayout);
 
+server.get("/games/:gameName", (request, response) => {
+  const gameName = request.params.gameName;
+  response.send(`<h1>${gameName} is not available at this time! </h1>`);
+});
+
 // Sign up route
 server.get("/sign-up", bodyParser, signup.get);
 server.post("/sign-up", bodyParser, signup.post);
