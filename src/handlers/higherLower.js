@@ -2,7 +2,6 @@ const templates = require("../components/templates")
 
 
 function getHLPage(request, response){
-  console.log("higherlower")
     const mainContent = `
     <h1> Welcome to Higher or Lower </h1>
     <div class="card-container">
@@ -12,7 +11,7 @@ function getHLPage(request, response){
           </div>
 
           <div class="row4">
-            <button class="new-game" onclick=higherLower()> New Game</button>
+            <button class="new-game" id="new-hl-game"> New Game</button>
           </div>
 
           <div class="row3">
