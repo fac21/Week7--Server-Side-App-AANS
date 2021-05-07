@@ -11,11 +11,15 @@ const errorHandler = require("./src/middleware/errorHandler.js");
 const staticHandler = express.static("public");
 const flash = require("connect-flash");
 const bodyParser = express.urlencoded();
+const readCookie = require("./src/middleware/readCookie");
 
 // Routes
 const home = require("./src/handlers/home");
 const signup = require("./src/handlers/signup");
 const logIn = require("./src/handlers/logIn");
+
+server.use(cookieParser(process.env.COOKIE_SECRET));
+server.use(readCookie.readCookie);
 
 server.use(
   session({
@@ -28,7 +32,6 @@ server.use(
 server.use(flash());
 server.use(staticHandler);
 server.use(logger.logger);
-server.use(cookieParser(process.env.COOKIE_SECRET));
 
 server.get("/", home.getLayout);
 

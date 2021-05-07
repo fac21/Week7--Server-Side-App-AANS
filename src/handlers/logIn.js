@@ -5,8 +5,14 @@ const flashMessages = require("../middleware/flashMessages");
 function get(request, response) {
   const pageContent = templates.logInForm;
   const flashMes = flashMessages.getFleshMessage(request);
+  const userSession = request.userSession;
 
-  response.send(templates.getHtml("Log In", flashMes + pageContent));
+  if (userSession) {
+    request.flash("aleadyLogin", flashMessages.alreadyLogin);
+    response.redirect("/");
+  } else {
+    response.send(templates.getHtml("Log In", flashMes + pageContent));
+  }
 }
 
 function post(request, response) {
