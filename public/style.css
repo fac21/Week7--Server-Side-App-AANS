@@ -1,4 +1,4 @@
-html{
+html {
   --background: #abe9fe;
   --main-text: black;
   --accent-text: white;
@@ -7,65 +7,88 @@ html{
 }
 
 h1 {
-    color: red;
+  color: red;
 }
- 
-.card-container{
-    margin: 0 0 2rem 0;
-    display: flex;  
-    flex-direction: column-reverse;
-    background-position: center;
-    background-size: 100%;
-    background-repeat: no-repeat;
+
+.card-container {
+  margin: 0 0 2rem 0;
+  display: flex;
+  flex-direction: column-reverse;
+  background-position: center;
+  background-size: 100%;
+  background-repeat: no-repeat;
+}
+
+.card-container div {
+  display: flex;
+  justify-content: center;
+}
+
+.cards {
+  height: 15vh;
+  width: 11vh;
+  border-radius: 15%;
+  border: 2px solid var(--main-text);
+  background-image: var(--bg-circle);
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: var(--accent-text);
+}
+
+.cards-selected {
+  display: flex;
+  align-items: center;
+  background-color: var(--accent-text);
+  background-image: none;
+  height: 15vh;
+  width: 11vh;
+  border-radius: 15%;
+  border: 2px solid var(--main-text);
+  font-size: 5vh;
+  color: black;
+}
+
+#Game button {
+  border-radius: 30px;
+  font-weight: 600;
+  font-size: 2.5rem;
+  padding: 1rem;
+  color: var(--main-text);
+  position: relative;
+  cursor: pointer;
+}
+
+.new-game {
+  display: flex;
+  background-color: var(--background);
+}
+
+.hlbuttons button {
+  background-color: var(--accent-color);
+  visibility: hidden;
+  margin: 0 0 2rem 0;
+}
+
+.flash-message-red {
+  background: rgb(238, 147, 147);
+  text-align: center;
+  color: white;
+  animation: dissapear 2s linear;
+}
+
+.flash-message-green {
+  background: rgba(0, 128, 0, 0.493);
+  text-align: center;
+  color: white;
+  animation: dissapear 2s linear;
+}
+
+@keyframes dissapear {
+  0% {
+    opacity: 1;
   }
-  
-  .card-container div{
-    display: flex;
-    justify-content: center;
+  100% {
+    opacity: 0;
   }
-  
-  .cards{
-    height: 15vh;
-    width: 11vh;
-    border-radius: 15%;
-    border:2px solid var(--main-text);
-    background-image: var(--bg-circle);
-    background-position: center;
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-color: var(--accent-text);
-  }
-  
-  .cards-selected{
-    display: flex;
-    align-items: center;
-    background-color: var(--accent-text);
-    background-image: none;
-    height: 15vh;
-    width: 11vh;
-    border-radius: 15%;
-    border:2px solid var(--main-text);
-    font-size: 5vh;
-    color: black;
-  }
-  
-  #Game button{
-   border-radius: 30px;
-   font-weight: 600;
-   font-size: 2.5rem;
-   padding: 1rem;
-   color: var(--main-text);
-   position: relative;
-   cursor: pointer;
-  }
-  
-  .new-game{
-    display:flex;
-    background-color: var(--background);
-  }
-  
-  .hlbuttons button{
-    background-color: var(--accent-color);
-    visibility:hidden;
-    margin: 0 0 2rem 0;
-  } 
+}
