@@ -39,16 +39,14 @@ server.get("/games/higher-lower", hlGame.getHLPage);
 
 server.post("/update-score", (request, response) => {
   if (request) {
-    console.log(request);
   }
   response.redirect("/");
 });
 
 server.get("/games/:gameName", (request, response) => {
   const gameName = request.params.gameName;
-  console.log(request);
+
   if (gameName != "higher-lower") {
-    console.log("dynamic");
     response.send(`<h1>${gameName} is not available at this time! </h1>`);
   }
 });
@@ -68,10 +66,6 @@ server.get("/error", (req, res, next) => {
 });
 
 server.use(errorHandler.handleErrors);
-
-// server.use((request, response) => {
-//   response.status(404).send(`<h1>Not found</h1>`);
-// });
 
 const PORT = process.env.PORT || 3000;
 
