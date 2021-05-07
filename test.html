@@ -1,0 +1,29 @@
+<h1>Sign up</h1>
+<form action="sign-up" method="POST">
+  <div>
+    <label for="username">Username <span aria-hidden="true">*</span></label>
+    <input type="text" name="username" id="username" required />
+  </div>
+
+  <div>
+    <label for="email">Email <span aria-hidden="true">*</span></label>
+    <input type="email" name="email" id="email" required />
+  </div>
+
+  <div>
+    <label for="password">Password <span aria-hidden="true">*</span></label>
+    <div id="passwordRequirements">
+      Passwords must contain at least 8 characters.
+    </div>
+    <input
+      type="password"
+      name="password"
+      id="password"
+      required
+      aria-describedby="passwordRequirements"
+      minlength="8"
+    />
+  </div>
+
+  <input type="submit" value="Create user" />
+</form>

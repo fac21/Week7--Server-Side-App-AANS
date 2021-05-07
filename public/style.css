@@ -118,11 +118,17 @@ ul li {
   align-content: center;
 }
 
-.flex_row a {
+.flex_row a,
+input[type="submit"] {
   text-decoration: none;
   color: white;
   background: black;
   padding: 10px;
+}
+
+input[type="submit"],
+form div:not(#passwordRequirements) {
+  margin-bottom: 20px;
 }
 
 .games a {
