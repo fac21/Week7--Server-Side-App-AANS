@@ -70,7 +70,9 @@ h1 {
   visibility: hidden;
   margin: 0 0 2rem 0;
 }
-
+h2 {
+  text-align: center;
+}
 .flash-message-red {
   background: rgb(238, 147, 147);
   text-align: center;

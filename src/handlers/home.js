@@ -24,6 +24,7 @@ function getLayout(req, res) {
       <li><a href="/sign-up">Sign Up</a></li>
       <li><a href="/log-in">Log In</a></li>
     </ul>
+    <h2 id="navGame">Game list</h2>
     <ul class="flex_row games">
     ${gamesList}
     </ul>

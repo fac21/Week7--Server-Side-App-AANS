@@ -14,7 +14,7 @@ function updateScore(gameName) {
 
 function updateLastPlayed() {}
 
-const flashMessage = document.querySelector("h2");
+const flashMessage = document.querySelector("h2:not(#navGame)");
 
 setTimeout(() => (flashMessage.style.display = "none"), 3000);
 
