@@ -1,5 +1,5 @@
 function getHtml(title, mainContent) {
-  return  `
+  return `
     <!DOCTYPE html>
     <html lang="en">
     <head>
@@ -10,7 +10,7 @@ function getHtml(title, mainContent) {
     <link rel="stylesheet" href="/style.css">
     <title>${title}</title>
   </head>
-  <body> 
+  <body class="flex_column"> 
   ${mainContent}
   <script src="/app.js" type="module"></script>
   <script src="/oldamy.js" type="module"></script>
@@ -45,11 +45,13 @@ const signupForm = `
     </form>
 `;
 
-function createGameList(gamesArray){
-  const gameListHtml = ''
-  gamesArray.forEach((array) => gameListHtml += 
-  `<li><a href="${array[1]}">${array[0]}</a></li>`)
-  return gameListHtml
+function createGameList(gamesArray) {
+  const gameListHtml = "";
+  gamesArray.forEach(
+    (array) =>
+      (gameListHtml += `<li><a href="${array[1]}">${array[0]}</a></li>`)
+  );
+  return gameListHtml;
 }
 
 const logInForm = `
@@ -64,4 +66,4 @@ const logInForm = `
   <input type="submit" value="Log in" />
 </form>`;
 
-module.exports = { getHtml, signupForm, logInForm, createGameList};
+module.exports = { getHtml, signupForm, logInForm, createGameList };

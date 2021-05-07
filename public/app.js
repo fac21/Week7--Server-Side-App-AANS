@@ -16,6 +16,6 @@ function updateLastPlayed() {}
 
 const flashMessage = document.querySelector("h2");
 
-setTimeout(() => (flashMessage.style.display = "none"), 1000);
+setTimeout(() => (flashMessage.style.display = "none"), 3000);
 
 export { updateScore, updateLastPlayed };

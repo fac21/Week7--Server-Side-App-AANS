@@ -20,11 +20,11 @@ function getLayout(req, res) {
       return `
     <nav>
     <h1 class="logo">GAME LOGO</h1>
-    <ul>
+    <ul class="flex_row">
       <li><a href="/sign-up">Sign Up</a></li>
       <li><a href="/log-in">Log In</a></li>
     </ul>
-    <ul>
+    <ul class="flex_row games">
     ${gamesList}
     </ul>
   </nav>`;

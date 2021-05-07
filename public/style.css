@@ -8,6 +8,7 @@ html {
 
 h1 {
   color: red;
+  text-align: center;
 }
 
 .card-container {
@@ -74,14 +75,64 @@ h1 {
   background: rgb(238, 147, 147);
   text-align: center;
   color: white;
-  animation: dissapear 2s linear;
+  animation: dissapear 3s linear;
 }
 
 .flash-message-green {
   background: rgba(0, 128, 0, 0.493);
   text-align: center;
   color: white;
-  animation: dissapear 2s linear;
+  animation: dissapear 3s linear;
+}
+
+* {
+  padding: 0;
+  box-sizing: border-box;
+  margin: 0;
+}
+
+body {
+  height: 100vh;
+}
+
+h1 {
+  margin: 20px;
+}
+
+ul li {
+  list-style-type: none;
+  text-align: center;
+  margin: 20px 20px;
+}
+
+.flex_row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-content: center;
+}
+
+.flex_column {
+  display: flex;
+  flex-direction: column;
+  align-content: center;
+}
+
+.flex_row a {
+  text-decoration: none;
+  color: white;
+  background: black;
+  padding: 10px;
+}
+
+.games a {
+  text-decoration: none;
+  color: white;
+  background: red;
+}
+
+a[href^="/games/higher-lower"] {
+  background: green;
 }
 
 @keyframes dissapear {
