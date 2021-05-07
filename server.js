@@ -1,6 +1,6 @@
 const express = require("express");
 const server = express();
-const hlGame = require("./src/handlers/higherLower")
+const hlGame = require("./src/handlers/higherLower");
 const session = require("express-session");
 const auth = require("./src/auth");
 
@@ -24,7 +24,7 @@ server.use(readCookie.readCookie);
 server.use(
   session({
     secret: process.env.COOKIE_SECRET,
-    cookie: auth.COOKIE_SECRET,
+    cookie: auth.COOKIE_OPTIONS,
     saveUninitialized: true, // don't save unmodified
     resave: true, // forces the session to be saved back to the store
   })
@@ -38,19 +38,19 @@ server.get("/", home.getLayout);
 server.get("/games/higher-lower", hlGame.getHLPage);
 
 server.post("/update-score", (request, response) => {
-  if(request){
-    console.log(request)
+  if (request) {
+    console.log(request);
   }
-  response.redirect("/")
+  response.redirect("/");
 });
 
 server.get("/games/:gameName", (request, response) => {
   const gameName = request.params.gameName;
-  console.log(request)
-  if(gameName != 'higher-lower'){
-    console.log("dynamic")
-  response.send(`<h1>${gameName} is not available at this time! </h1>`)
-}
+  console.log(request);
+  if (gameName != "higher-lower") {
+    console.log("dynamic");
+    response.send(`<h1>${gameName} is not available at this time! </h1>`);
+  }
 });
 
 // Log in route
