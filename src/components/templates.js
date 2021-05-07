@@ -22,13 +22,26 @@ function getHtml(title, mainContent) {
 const signupForm = `  
   <h1>Sign up</h1>
   <form action="sign-up" method="POST">
-      <label for="username">Username</label>
+      <label for="username">Username
+      <span aria-hidden="true">*</span></label>
       <input type="text" name="username" id="username" required />
-      <label for="email">Email</label>
+      <label for="email">Email
+      <span aria-hidden="true">*</span></label>
       <input type="email" name="email" id="email" required />
-      <label for="password">Password</label>
-      <input type="password" name="password" id="password" required />
-      <input type="submit" value="Create user" />
+      <label for="password">Password
+      <span aria-hidden="true">*</span></label>
+      <div id="passwordRequirements">
+  Passwords must contain at least 8 characters.
+</div>
+      <input type="password" name="password" id="password" required 
+      aria-describedby="passwordRequirements"
+      minlength=8
+    />
+
+
+
+    
+      <input type="submit" value="Create user"  />
     </form>
 `;
 
