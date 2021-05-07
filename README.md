@@ -1,6 +1,6 @@
 # Week7--Server-Side-App-AANS
 
-#### Our peoject this week was to build Node/Express server-rendered application with a Postgres database considering validation, error-handling, good user-experience, and showing temporary flash messages which was our team pick up for technical criteria.  
+#### Our peoject this week was to build Node/Express server-rendered application with a Postgres database considering validation, error-handling, good user-experience, and temporary flash messages showing (our team pick up for spike of the week).
 
 ## Roles 
 
