@@ -10,7 +10,7 @@ const loginMessage = `
 `;
 
 const signupMessage = `
-<h2 class="flash-message">You are now sign up</h2>
+<h2 class="flash-message">You are now signed up</h2>
 `;
 
 const loginErrorMessage = `
